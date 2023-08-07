@@ -6,7 +6,7 @@ struct ThumnailView: View {
         VStack {
             Image("luzura")
                 .resizable()
-                .frame(width: 120, height: 120)
+                .frame(width: 90, height: 90)
                 .padding()
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .overlay {
