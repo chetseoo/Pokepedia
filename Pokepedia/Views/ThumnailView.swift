@@ -21,6 +21,14 @@ struct ThumnailView: View {
                 Text(pokemon.name)
                     .font(.system(size: 18))
                     .fontWeight(.bold)
+                
+            }
+            
+            Button(action: {
+                //sendPost(paramText: "pn=2")
+                test()
+            }) {
+                Text("test")
             }
         }
     }
