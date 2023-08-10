@@ -15,28 +15,22 @@ struct ThumnailView: View {
                 }
 
             HStack {
-                Text("N0.\(pokemon.id)")
-                    .font(.system(size: 15))
+                Text(pokemon.id)
+                    .font(.system(size: 12))
 
                 Text(pokemon.name)
-                    .font(.system(size: 18))
+                    .font(.system(size: 13))
                     .fontWeight(.bold)
                 
             }
-            
-            Button(action: {
-                //sendPost(paramText: "pn=2")
-                test()
-            }) {
-                Text("test")
-            }
+        
         }
     }
 }
 
 struct ThumnailView_Previews: PreviewProvider {
     static var previews: some View {
-        ThumnailView(pokemon: Pokemon(id: 124, name: "루주라"))
+        ThumnailView(pokemon: Pokemon(id: "NO.124", name: "루주라"))
             .previewLayout(.sizeThatFits)
     }
 }

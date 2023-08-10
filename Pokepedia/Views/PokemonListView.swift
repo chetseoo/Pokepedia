@@ -2,6 +2,8 @@ import SwiftUI
 
 struct PokemonListView: View {
     @State var searchingText: String = ""
+    @StateObject var viewModel = testViewModel()
+
     var body: some View {
         VStack {
             TextField("포켓몬 이름을 입력하세요.", text: $searchingText)
@@ -10,12 +12,20 @@ struct PokemonListView: View {
             Divider()
 
             ScrollView {
-                ForEach(pokemons, id: \.id) { pokemon in
-                    HStack {
-                        ThumnailView(pokemon: pokemon)
-                        ThumnailView(pokemon: pokemon)
-                        ThumnailView(pokemon: pokemon)
+                VStack(alignment: .leading) {
+                    ForEach(0..<viewModel.pokemons.count / 3, id: \.self) { rowIndex in
+                        HStack {
+                            ForEach(0..<3, id: \.self) { columnIndex in
+                                let index = rowIndex * 3 + columnIndex
+                                if index < viewModel.pokemons.count {
+                                    ThumnailView(pokemon: viewModel.pokemons[index])
+                                }
+                            }
+                        }
                     }
+                }
+                .onAppear {
+                    viewModel.test()
                 }
             }
         }
