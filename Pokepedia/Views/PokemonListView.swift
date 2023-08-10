@@ -13,10 +13,10 @@ struct PokemonListView: View {
 
             ScrollView {
                 VStack(alignment: .leading) {
-                    ForEach(0..<viewModel.pokemons.count / 3, id: \.self) { rowIndex in
+                    ForEach(0..<viewModel.pokemons.count / 2, id: \.self) { rowIndex in
                         HStack {
-                            ForEach(0..<3, id: \.self) { columnIndex in
-                                let index = rowIndex * 3 + columnIndex
+                            ForEach(0..<2, id: \.self) { columnIndex in
+                                let index = rowIndex * 2 + columnIndex
                                 if index < viewModel.pokemons.count {
                                     ThumnailView(pokemon: viewModel.pokemons[index])
                                 }
