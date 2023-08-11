@@ -11,8 +11,8 @@ struct PokemonListView: View {
 
             Divider()
 
-            ScrollView {
-                VStack(alignment: .leading) {
+            VStack(alignment: .leading) {
+                ScrollView {
                     ForEach(0..<viewModel.pokemons.count / 2, id: \.self) { rowIndex in
                         HStack {
                             ForEach(0..<2, id: \.self) { columnIndex in
@@ -22,10 +22,11 @@ struct PokemonListView: View {
                                 }
                             }
                         }
+                        .padding(.vertical, 5)
                     }
-                }
-                .onAppear {
-                    viewModel.test()
+                    .onAppear {
+                        viewModel.test()
+                    }
                 }
             }
         }

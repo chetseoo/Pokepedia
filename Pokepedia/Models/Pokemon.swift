@@ -1,14 +1,9 @@
 import Foundation
 import UIKit
 
-class Pokemon: Identifiable, ObservableObject {
+struct Pokemon: Identifiable {
     let id: String
     let name: String
-    @Published var image: UIImage?
-
-    init(id: String, name: String, image: UIImage?) {
-        self.id = id
-        self.name = name
-        self.image = image
-    }
+    var image: UIImage?
+    let appearance: String
 }
