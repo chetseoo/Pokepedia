@@ -7,14 +7,13 @@ struct PokemonListView: View {
     var body: some View {
         VStack {
             NavigationStack {
-                TextField("포켓몬 이름을 입력하세요.", text: $searchingText)
-                    .padding()
+                SearchBar(text: self.$searchingText)
 
                 Divider()
 
                 VStack(alignment: .leading) {
                     ScrollView {
-                        ForEach(0..<viewModel.pokemons.count / 2, id: \.self) { rowIndex in
+                        ForEach((0..<viewModel.pokemons.count / 2).filter { "\($0)".contains(self.searchingText) || self.searchingText.isEmpty }, id: \.self) { rowIndex in
                             HStack {
                                 ForEach(0..<2, id: \.self) { columnIndex in
                                     let index = rowIndex * 2 + columnIndex

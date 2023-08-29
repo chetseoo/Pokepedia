@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A14BE3872A867F570012CAC2 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14BE3862A867F570012CAC2 /* SearchBar.swift */; };
 		A17FD63F2A812CA300FDB610 /* ThumnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FD63E2A812CA300FDB610 /* ThumnailView.swift */; };
 		A17FD6432A81336B00FDB610 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FD6422A81336B00FDB610 /* Pokemon.swift */; };
 		A17FD6452A81346A00FDB610 /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FD6442A81346A00FDB610 /* PokemonListView.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A14BE3862A867F570012CAC2 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		A17FD63E2A812CA300FDB610 /* ThumnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumnailView.swift; sourceTree = "<group>"; };
 		A17FD6422A81336B00FDB610 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		A17FD6442A81346A00FDB610 /* PokemonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				A17FD63E2A812CA300FDB610 /* ThumnailView.swift */,
 				A17FD6442A81346A00FDB610 /* PokemonListView.swift */,
 				A1E8AC592A86785B00977C87 /* PokemonInfoView.swift */,
+				A14BE3862A867F570012CAC2 /* SearchBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				A1F8EDDD2A7BBD2C007EDA0D /* ContentView.swift in Sources */,
 				A17FD6432A81336B00FDB610 /* Pokemon.swift in Sources */,
 				A1F8EDDB2A7BBD2C007EDA0D /* PokepediaApp.swift in Sources */,
+				A14BE3872A867F570012CAC2 /* SearchBar.swift in Sources */,
 				A1E8AC5A2A86785B00977C87 /* PokemonInfoView.swift in Sources */,
 				A17FD63F2A812CA300FDB610 /* ThumnailView.swift in Sources */,
 			);

@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-struct Pokemon: Identifiable {
+struct Pokemon {
     let id: String
     let name: String
     var image: UIImage?

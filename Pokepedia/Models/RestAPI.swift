@@ -57,14 +57,8 @@ class testViewModel: ObservableObject {
                        let image = UIImage(data: imageData)
                     {
                         self.pokemons[index].image = image
-                        print("\(String(describing: self.pokemons[index].image))")
                     }
                 }
-
-                print("test: \(pokemonNumberArray)")
-                print("test: \(pokemonNameArray)")
-                print("test: \(pokemonImageArray)")
-                print("test: \(pokemonAppearanceArray)")
 
             } catch {
                 print("crawl error")
