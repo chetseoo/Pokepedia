@@ -6,6 +6,10 @@ import UIKit
 class testViewModel: ObservableObject {
     @Published var pokemons = [Pokemon]()
 
+    func convertToType(from string: String) -> Type? {
+        return Type.allCases.first { $0.name == string }
+    }
+
     func test() {
         guard let url = URL(string: "https://pokemonkorea.co.kr/pokedex")
         else {
@@ -26,22 +30,32 @@ class testViewModel: ObservableObject {
                 var pokemonNameArray: [String] = []
                 var pokemonImageArray: [String] = []
                 var pokemonAppearanceArray: [String] = []
+                // var pokemonTypeArray: [String] = []
 
-                // 포켓몬 번호, 이름, 모습 적용
+                // 포켓몬 번호, 이름, 모습, 타입 적용
                 for element in elements {
                     let text = try element.select("h3").text()
                     let parts = text.split(separator: " ", maxSplits: 1)
 
                     let appearance = try element.select("div > p").text()
 
+                    let typeString = try element.select("span").text()
+                    let typeArray = typeString.split(separator: " ")
+                    let typeArrayStrings = typeArray.map { typeStr -> String in
+                        String(typeStr)
+                    }
+                    let typeArrayEnums: [Type] = typeArrayStrings.compactMap { self.convertToType(from: $0) }
+
                     pokemonAppearanceArray.append(appearance)
+
+                    //for index in 0 ..< typeArray.count {}
 
                     if parts.count == 2 {
                         pokemonNumberArray.append(String(parts[0]))
                         pokemonNameArray.append(String(parts[1]))
-
-                        self.pokemons.append(Pokemon(id: String(parts[0]), name: String(parts[1]), image: nil, appearance: appearance))
                     }
+
+                    self.pokemons.append(Pokemon(id: String(parts[0]), name: String(parts[1]), image: nil, appearance: appearance, type: typeArrayEnums))
                 }
 
                 // 이미지 적용

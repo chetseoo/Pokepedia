@@ -26,7 +26,7 @@ struct ThumnailView: View {
                     .font(.system(size: 17))
                     .fontWeight(.bold)
             }
-            
+
             Text(pokemon.appearance)
                 .font(.system(size: 14))
                 .fontWeight(.semibold)
@@ -36,7 +36,7 @@ struct ThumnailView: View {
 
 struct ThumnailView_Previews: PreviewProvider {
     static var previews: some View {
-        ThumnailView(pokemon: Pokemon(id: "NO.124", name: "루주라", image: nil, appearance: "거다이맥스의 모습"))
+        ThumnailView(pokemon: Pokemon(id: "NO.124", name: "루주라", image: nil, appearance: "거다이맥스의 모습", type: []))
             .previewLayout(.sizeThatFits)
     }
 }
