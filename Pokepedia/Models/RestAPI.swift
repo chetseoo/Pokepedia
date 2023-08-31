@@ -27,6 +27,7 @@ class ViewModel: ObservableObject {
                 let NameAndType: Elements = try doc.select(".bg-white > td")
 
                 var updatedPokemons = [Pokemon]()
+                var pokemonId = 1
 
                 for (index, num) in NameAndType.enumerated() {
                     let name = try num.select("a").text()
@@ -45,9 +46,8 @@ class ViewModel: ObservableObject {
                                 }
                             }
                             if !type.isEmpty {
-                                print("포켓몬 이름 : \(name), 타입 : \(type)")
-                                updatedPokemons.append(Pokemon(id: "1", korName: name, appearance: "ㅋ", type: enumType))
-                                //print(Pokemon(id: "1", korName: name, appearance: "ㅋ", type: enumType))
+                                updatedPokemons.append(Pokemon(id: "#\(pokemonId)", korName: name, appearance: "", type: enumType))
+                                pokemonId += 1
                             }
                         }
                     }

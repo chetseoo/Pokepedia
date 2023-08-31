@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ThumnailView: View {
     @State var pokemon: Pokemon
-    
+
     var body: some View {
         VStack {
             if let image = pokemon.image {
@@ -27,12 +27,20 @@ struct ThumnailView: View {
                     .fontWeight(.bold)
             }
 
+            HStack {
+                ForEach(pokemon.type, id: \.self) { type in
+                    TypeStringStyle(type: type)
+                }
+            }
+
             Text(pokemon.appearance)
                 .font(.system(size: 14))
                 .fontWeight(.semibold)
         }
+        .padding()
+        .cornerRadius(15)
+        .border(.black)
     }
-   
 }
 
 struct ThumnailView_Previews: PreviewProvider {
