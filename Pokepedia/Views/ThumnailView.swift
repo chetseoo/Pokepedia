@@ -2,8 +2,7 @@ import SwiftUI
 
 struct ThumnailView: View {
     @State var pokemon: Pokemon
-    @StateObject var viewmodel = ViewModel()
-
+    
     var body: some View {
         VStack {
             if let image = pokemon.image {
@@ -31,9 +30,6 @@ struct ThumnailView: View {
             Text(pokemon.appearance)
                 .font(.system(size: 14))
                 .fontWeight(.semibold)
-        }
-        .onAppear {
-            viewmodel.parsing()
         }
     }
    

@@ -1,11 +1,9 @@
 import Foundation
 import UIKit
 
-struct Pokemon {
+struct Pokemon: Hashable {
     let id: String
     let korName: String
-    // let japName: String
-
     var image: UIImage?
     let appearance: String
     let type: [Type]

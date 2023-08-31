@@ -24,21 +24,37 @@ class ViewModel: ObservableObject {
 
             do {
                 let doc: Document = try SwiftSoup.parse(html)
-                let pokNumber: Elements = try doc.select(".bg-white > td")
+                let NameAndType: Elements = try doc.select(".bg-white > td")
 
-                for (index, num) in pokNumber.enumerated() {
+                var updatedPokemons = [Pokemon]()
+
+                for (index, num) in NameAndType.enumerated() {
                     let name = try num.select("a").text()
-                    
+
                     if !name.isEmpty {
                         let typeIndex = index + 1
-                        if typeIndex < pokNumber.count {
-                            let typeElement = pokNumber[typeIndex]
+                        if typeIndex < NameAndType.count {
+                            let typeElement = NameAndType[typeIndex]
                             let type = try typeElement.select("a").text()
+
+                            let typeArray = type.split(separator: " ")
+                            var enumType: [Type] = []
+                            for index in 0 ..< typeArray.count {
+                                if let convertedType = self.convertToType(from: String(typeArray[index])) {
+                                    enumType.append(convertedType)
+                                }
+                            }
                             if !type.isEmpty {
                                 print("포켓몬 이름 : \(name), 타입 : \(type)")
+                                updatedPokemons.append(Pokemon(id: "1", korName: name, appearance: "ㅋ", type: enumType))
+                                //print(Pokemon(id: "1", korName: name, appearance: "ㅋ", type: enumType))
                             }
                         }
                     }
+                }
+
+                DispatchQueue.main.async {
+                    self.pokemons = updatedPokemons
                 }
 
             } catch {
