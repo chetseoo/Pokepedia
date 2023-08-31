@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ThumnailView: View {
     @State var pokemon: Pokemon
+    @StateObject var viewmodel = ViewModel()
 
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct ThumnailView: View {
                     .font(.system(size: 16))
                     .fontWeight(.semibold)
 
-                Text(pokemon.name)
+                Text(pokemon.korName)
                     .font(.system(size: 17))
                     .fontWeight(.bold)
             }
@@ -31,12 +32,16 @@ struct ThumnailView: View {
                 .font(.system(size: 14))
                 .fontWeight(.semibold)
         }
+        .onAppear {
+            viewmodel.parsing()
+        }
     }
+   
 }
 
 struct ThumnailView_Previews: PreviewProvider {
     static var previews: some View {
-        ThumnailView(pokemon: Pokemon(id: "NO.124", name: "루주라", image: nil, appearance: "거다이맥스의 모습", type: []))
+        ThumnailView(pokemon: Pokemon(id: "NO.124", korName: "루주라", image: nil, appearance: "거다이맥스의 모습", type: []))
             .previewLayout(.sizeThatFits)
     }
 }

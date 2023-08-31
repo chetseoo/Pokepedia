@@ -4,7 +4,7 @@ import SwiftUI
 struct PokepediaApp: App {
     var body: some Scene {
         WindowGroup {
-            PokemonListView()
+            ContentView()
         }
     }
 }

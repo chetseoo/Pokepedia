@@ -7,7 +7,6 @@ struct PokemonListView: View {
     var body: some View {
         VStack {
             NavigationStack {
-                SearchBar(text: self.$searchingText)
 
                 Divider()
 
