@@ -15,6 +15,6 @@ struct TypeStringStyle: View {
 
 struct TypeStringStyle_Previews: PreviewProvider {
     static var previews: some View {
-        TypeStringStyle(type: .Grass)
+        TypeStringStyle(type: .Fighting)
     }
 }
