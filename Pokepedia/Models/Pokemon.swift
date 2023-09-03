@@ -2,10 +2,12 @@ import Foundation
 import UIKit
 
 struct Pokemon: Hashable {
-    let id: String
+    let totalId: Int
+    let areaId: Int
     let korName: String
-    var image: UIImage?
-    let appearance: String
+    let japName: String
+    let engName: String
+    let ecology: String
     let type: [Type]
-    // 지방
+    let area: Area
 }

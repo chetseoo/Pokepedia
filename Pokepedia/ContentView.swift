@@ -1,14 +1,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel = ViewModel()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ScrollView {
+            LazyVStack {
+                ForEach(viewModel.pokKorNameArray, id: \.self) { name in
+                    TypeStringStyle(type: name)
+                }
+                
+            }
         }
-        .padding()
+        .onAppear {
+            viewModel.crawling()
+        }
     }
 }
 

@@ -1,20 +1,19 @@
 import SwiftUI
 
 struct TypeStringStyle: View {
-    @State var type: Type
-
+    @State var type: String
+    
     var body: some View {
-        Text(type.name)
+        Text(type)
             .fontWeight(.black)
-            .foregroundColor(.white)
             .padding()
-            .background(type.color)
+            .background(Color.yellow)
             .cornerRadius(20)
     }
 }
 
 struct TypeStringStyle_Previews: PreviewProvider {
     static var previews: some View {
-        TypeStringStyle(type: .Fighting)
+        TypeStringStyle(type: "zzzzzzz")
     }
 }

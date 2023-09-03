@@ -16,6 +16,7 @@ class ViewModel: ObservableObject {
         // 링크 내 한글 인코딩을 위한 작업
         let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let url = URL(string: encodedString)!
+        var IdArray: [String] = []
 
         AF.request(url).responseString { response in
             guard let html = response.value else {
@@ -30,9 +31,34 @@ class ViewModel: ObservableObject {
                 var pokemonId = 1
 
                 for (index, num) in NameAndType.enumerated() {
-                    let name = try num.select("a").text()
+                    let name = try num.select("a")
 
-                    if !name.isEmpty {
+                    if  try !(name.text().isEmpty) {
+                        let aTag = try name.attr("href").removingPercentEncoding!
+                        if !(aTag.contains("타입")){
+                            let detailString = "https://pokemon.fandom.com\(aTag)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                            let detailUrl = URL(string: detailString)!
+                            
+                            AF.request(detailUrl).responseString{ res in
+                                guard let detailHtml = res.value else {
+                                    return
+                                }
+                                
+                                do {
+                                    let doc: Document = try SwiftSoup.parse(detailHtml)
+                                    let pokName = try doc.select(".head > .name > strong").text()
+                                    let pokId = try doc.select(".index > .rounded").text()
+                                    print("\(pokName) : \(pokId)")
+                                    
+                                } catch {
+                                    print("crawl errror")
+                                }
+                                
+                            }
+                        }
+                            
+                        
+                        
                         let typeIndex = index + 1
                         if typeIndex < NameAndType.count {
                             let typeElement = NameAndType[typeIndex]
@@ -46,10 +72,11 @@ class ViewModel: ObservableObject {
                                 }
                             }
                             if !type.isEmpty {
-                                updatedPokemons.append(Pokemon(id: "#\(pokemonId)", korName: name, appearance: "", type: enumType))
+                                updatedPokemons.append(Pokemon(id: "", korName: try name.text(), appearance: "", type: enumType))
                                 pokemonId += 1
                             }
                         }
+                        
                     }
                 }
 
